@@ -19,11 +19,11 @@
 
 /* global styles */
 @mixin global-styles {
-  *,
+  /*   *,
   *::before,
   *::after {
     box-sizing: border-box;
-  }
+  } */
 
   a {
     text-decoration: none;
@@ -36,9 +36,9 @@
   body {
     font-size: 1rem;
     font-family: $font-regular;
-    margin: 0 1.6rem;
+    margin: 0;
     @include tablet {
-      margin: 0 3.6rem;
+      margin: 0;
     }
   }
 
@@ -53,10 +53,6 @@
   ul {
     margin: 0;
     list-style: none;
-  }
-
-  iframe {
-    border: none;
   }
 }
 
