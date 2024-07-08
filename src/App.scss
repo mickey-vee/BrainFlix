@@ -1,0 +1,52 @@
+@use "../src/styles/partials/variables" as *;
+@use "../src/styles/partials/mixins" as *;
+@use "../src/styles/partials/fonts" as *;
+
+@include font-faces;
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__logo {
+    @include logo;
+    padding: 1.6rem 0;
+  }
+
+  &__avatar {
+    @include avatar;
+  }
+  &__search-bar {
+    display: flex;
+    align-items: center;
+  }
+  &__form {
+    flex: 1;
+    width: 90%;
+  }
+
+  &__search {
+    height: 2.5rem;
+    border-radius: 0.4rem;
+    border: 0.1rem solid $divider;
+    background-color: $form-background;
+
+    &::placeholder {
+      color: $primary-text;
+      font-size: 1rem;
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include button;
+
+    .upload-text {
+      margin: 0 auto;
+      font-family: $font-demi;
+    }
+  }
+}
