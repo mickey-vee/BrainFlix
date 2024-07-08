@@ -1,0 +1,124 @@
+@use "variables" as *;
+@use "fonts" as *;
+
+@mixin tablet {
+  @media screen and (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: $desktop-breakpoint) {
+    @content;
+  }
+}
+
+@mixin divider {
+  stroke-width: 0.1rem;
+  color: $mercury;
+}
+
+/* global styles */
+@mixin global-styles {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  html {
+    font-size: 10px;
+  }
+
+  body {
+    font-size: 1rem;
+    font-family: $font-regular, sans-serif;
+    margin: 0 1.6rem;
+    @include tablet {
+      margin: 0 3.6rem;
+    }
+  }
+
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  div,
+  li,
+  ul {
+    margin: 0;
+    list-style: none;
+  }
+
+  iframe {
+    border: none;
+  }
+}
+
+/* desktop & tablet text styles */
+@mixin desktop-page-header {
+  font-size: 6rem;
+  line-height: 6.8rem;
+  font-family: $font-bold;
+}
+
+@mixin desktop-section-header {
+  font-size: 6rem;
+  line-height: 4.4rem;
+  font-family: $font-bold;
+}
+
+@mixin desktop-sub-header {
+  font-size: 2.4rem;
+  line-height: 3.2rem;
+  font-family: $font-demi;
+}
+
+@mixin desktop-body-copy {
+  font-size: 1.4rem;
+  line-height: 2.2rem;
+  font-weight: $font-regular;
+}
+
+/* mobile text style */
+@mixin page-header {
+  font-size: 4rem;
+  font-family: $font-demi;
+}
+
+@mixin section-header {
+  font-size: 2.4rem;
+  line-height: 3.2rem;
+  font-family: $font-demi;
+}
+
+@mixin sub-header {
+  font-size: 2rem;
+  line-height: 2.2rem;
+  font-family: $font-demi;
+}
+
+@mixin body-copy {
+  font-size: 1.8rem;
+  line-height: 2.8rem;
+  font-weight: $font-regular;
+}
+
+/* padding */
+@mixin mobile-heading-pad {
+  padding: 2.4rem 0 1.6rem 0;
+}
+
+@mixin logo-size {
+  height: 2.8rem;
+}
+
+@mixin desktop-heading-pad {
+  padding: 4.8rem 0 2.4rem 0;
+}
