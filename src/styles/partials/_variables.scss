@@ -2,13 +2,17 @@
 $tablet-breakpoint: 768px;
 $desktop-breakpoint: 1280px;
 
-/* colors */
-$primary-black: #323232;
-$bandsite-dark-black: #000000;
-$label: #afafaf;
-$border: #e1e1e1;
-$primary: #ffffff;
-$highlight: #fafafa;
+/* primary colors */
+$primary-text: #323232;
+$primary-form: #0095ff;
+$secondary-text: #afafaf;
+$background: #ffffff;
+
+/* secondary colors */
+$video-text: #000000;
+$hover: #0065ad;
+$divider: #e1e1e1;
+$form-background: #fafafa;
 
 /* fonts */
 $font-regular: "Avenir Next Regular";
