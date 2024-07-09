@@ -7,13 +7,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import Nav from "./components/ComponentName/Nav/Nav";
-
-const NavTest = () => {
-  return <Nav />;
-};
+import Video from "./components/ComponentName/Video/Video";
 
 ReactDOM.createRoot(document.getElementById("nav")).render(
   <React.StrictMode>
-    <NavTest />
+    <Nav />
+  </React.StrictMode>
+);
+
+ReactDOM.createRoot(document.getElementById("video")).render(
+  <React.StrictMode>
+    <Video />
   </React.StrictMode>
 );

@@ -1,7 +1,7 @@
 import React from "react";
 import "./Nav.scss";
 
-const NavContent = () => {
+const Nav = () => {
   return (
     <>
       <div>
@@ -38,4 +38,4 @@ const NavContent = () => {
   );
 };
 
-export default NavContent;
+export default Nav;
