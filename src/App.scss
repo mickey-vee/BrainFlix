@@ -2,18 +2,18 @@
 @use "../src/styles/partials/mixins" as *;
 @use "../src/styles/partials/fonts" as *;
 
-@include font-faces;
 @include global-styles;
+@include font-faces;
 
 .nav {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 1.6rem;
 
   &__logo {
     @include logo;
     padding: 1.6rem 0;
-    display: block;
   }
 
   &__avatar {
@@ -22,43 +22,100 @@
   &__search-bar {
     display: flex;
     align-items: center;
+    width: 100%;
+    margin: 1.6rem 0;
   }
   &__form {
     flex: 1;
-    width: 90%;
+    height: 3.5rem;
   }
-
-  &__search {
-    height: 2.5rem;
-    border-radius: 0.4rem;
-    border: 0.1rem solid $divider;
-    background-color: $form-background;
-
-    &::placeholder {
-      color: $primary-text;
-      font-size: 1rem;
-    }
+  &__form-box {
+    width: 95%;
+    height: 100%;
+    @include form;
   }
 
   &__button {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    height: 5.5rem;
+    width: 100%;
+    margin-bottom: 1.6rem;
     @include button;
-
-    .upload-text {
-      margin: 0 auto;
-      font-family: $font-demi;
-    }
+  }
+  &__button-text {
+    margin: auto;
+    font-family: $font-demi;
+    font-size: 1.8rem;
   }
 }
 
-.video-image {
-  width: 100%;
-  padding: 0;
+.video {
+  &__image {
+    padding: 0;
+    width: 100%;
+  }
 }
 
-/* comments styling */
+.next-video {
+  padding: 0 1.6rem;
+  &__text {
+    @include subtitle;
+    color: $secondary-text;
+
+    padding: 1.6rem 0;
+  }
+  &__card {
+    display: flex;
+  }
+  &__image {
+    padding: 0;
+    width: 30%;
+  }
+  &__details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  &__title {
+    @include subtitle;
+  }
+  &__author {
+    @include subtext;
+  }
+}
+
+.main {
+  padding: 0 1.6rem;
+  &__title {
+    padding: 1.6rem 0;
+    @include title;
+    @include divider;
+  }
+
+  &__details {
+    @include divider;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1.6rem 0;
+    @include subtext;
+  }
+
+  &__detail-text {
+    padding: 1rem 0;
+    width: 50%;
+    color: $secondary-text;
+  }
+
+  &__detail-text--bold {
+    font-family: $font-demi;
+    color: $primary-text;
+  }
+  &__text {
+    @include subtext;
+    padding: 1.6rem 0;
+  }
+}
 
 .comments {
   padding: 1.6rem;
@@ -70,31 +127,17 @@
     padding: 8rem 25rem;
   }
 
-  &__title {
-    @include page-header;
-    @include tablet {
-      margin-left: -6.8rem;
-    }
-    @include desktop {
-      margin-left: -12.8rem;
-    }
-  }
   &__wrapper {
     padding: 1.6rem 0;
     display: flex;
     justify-content: space-around;
-    max-width: 100%;
     @include divider;
   }
 
   &__image {
-    background-image: url("../assets/images/Mohan-muruge.jpg");
-    margin-top: 1.6rem;
-    width: 3.6rem;
-    height: 3.6rem;
-    background-size: cover;
-    background-position: center;
-    border-radius: 50%;
+    @include avatar;
+    margin-top: 3.5rem;
+
     @include tablet {
       width: 4.8rem;
       height: 4.8rem;
@@ -110,8 +153,8 @@
   }
 
   &__label {
-    text-transform: uppercase;
-    font-family: $font-demi;
+    @include subtitle;
+    color: $secondary-text;
 
     @include tablet {
       font-size: 1.5rem;
@@ -124,8 +167,9 @@
     @include divider;
     border-radius: 0.4rem;
     margin: 1rem 0 2rem 0;
-    padding: 1.5rem;
+
     resize: none;
+    @include form;
     &::placeholder {
       font-size: 1.8rem;
     }
@@ -140,9 +184,9 @@
   &__submit {
     width: 100%;
     height: 5rem;
-    border-radius: 0.4rem;
     font-family: $font-demi;
     font-size: 2rem;
+    @include button;
     &:hover {
       cursor: pointer;
     }

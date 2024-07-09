@@ -7,17 +7,20 @@
     <title>BrainFlix</title>
   </head>
   <nav class="nav">
-    <a href="./index.html">
-      <img
-        class="nav__logo"
-        src="./src/assets/images/Logo/BrainFlix-logo.svg"
-        alt="BrainFlix Logo"
-      />
-    </a>
+    <div>
+      <a href="./index.html">
+        <img
+          class="nav__logo"
+          src="./src/assets/images/Logo/BrainFlix-logo.svg"
+          alt="BrainFlix Logo"
+        />
+      </a>
+    </div>
+
     <div class="nav__search-bar">
       <form class="nav__form">
         <input
-          class="nav__form--box"
+          class="nav__form-box"
           type="text"
           name="search"
           id="search"
@@ -32,46 +35,47 @@
         alt="Upload Image"
         class="upload-image"
       />
-      <span class="upload-text">Upload</span>
+      <span class="nav__button-text">UPLOAD</span>
     </button>
   </nav>
   <body>
-    <img
-      class="video-image"
-      src="./src/assets/images/Images/Upload-video-preview.jpg"
-      alt="Upload Video Preview"
-    />
-    <h1 class="main-title">The Future of Artificial Intelligence</h1>
-    <div>
-      <span>By aiden</span><span>Views</span><span>Date</span><span>Likes</span>
-    </div>
-    <div>
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit natus
-        consequatur quaerat, ipsa at quisquam, sapiente quasi distinctio,
-        recusandae laboriosam aperiam quam omnis officiis quas nulla possimus
-        commodi dolor perspiciatis.
-      </p>
-    </div>
-    <section class="comments">
-      <p class="comments__title">Join the Conversation</p>
-      <div class="comments__wrapper">
-        <div class="comments__image"></div>
-        <div class="comments__form-box">
-          <form id="form" class="form">
-            <div class="comments__item">
-              <label class="comments__label" for="name">Name</label>
-              <input
-                class="comments__name"
-                type="text"
-                id="name"
-                name="user_name"
-                placeholder="Enter your name"
-              />
-            </div>
+    <section class="video">
+      <video
+        class="video__image"
+        src=""
+        poster="./src/assets/images/Images/Upload-video-preview.jpg"
+      ></video>
+    </section>
+    <section class="content">
+      <div class="main">
+        <h1 class="main__title">The Future of Artificial Intelligence</h1>
+        <div class="main__wrapper">
+          <div class="main__details">
+            <span class="main__detail-text main__detail-text--bold"
+              >By aiden</span
+            ><span class="main__detail-text">Views</span
+            ><span class="main__detail-text">Date</span
+            ><span class="main__detail-text">Likes</span>
+          </div>
+        </div>
+        <div>
+          <p class="main__text">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit
+            natus consequatur quaerat, ipsa at quisquam, sapiente quasi
+            distinctio, recusandae laboriosam aperiam quam omnis officiis quas
+            nulla possimus commodi dolor perspiciatis.
+          </p>
+        </div>
+      </div>
 
-            <div class="comments__item">
-              <label class="comments__label" for="comment">Comment</label>
+      <div class="comments">
+        <div class="comments__wrapper">
+          <div class="comments__image"></div>
+          <div class="comments__form-box">
+            <form id="form" class="form">
+              <label class="comments__label" for="comment"
+                >JOIN THE CONVERSATION</label
+              >
               <textarea
                 class="comments__text"
                 id="comment"
@@ -80,21 +84,33 @@
                 cols="30"
                 placeholder="Add a new comment"
               ></textarea>
-            </div>
 
-            <div class="comments__button">
-              <button type="submit" class="comments__submit" id="add-comment">
-                COMMENT
-              </button>
-            </div>
-          </form>
+              <div class="comments__button">
+                <button type="submit" class="comments__submit" id="add-comment">
+                  COMMENT
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="form-comments"></div>
+      </div>
+    </section>
+
+    <!-- JS stuff -->
+    <section class="next-video">
+      <h2 class="next-video__text">NEXT VIDEOS</h2>
+      <div class="next-video__card">
+        <img
+          class="next-video__image"
+          src="https://unit-3-project-api-0a5620414506.herokuapp.com/images/image4.jpg"
+          alt=""
+        />
+        <div class="next-video__details">
+          <h3 class="next-video__title">Exploring Cities of Europe</h3>
+          <h3 class="next-video__author">Ryan Hernandez</h3>
         </div>
       </div>
-      <div class="form-comments"></div>
-    </section>
-    <section>
-      <h2>NEXT VIDEOS</h2>
-      <!-- JS stuff -->
     </section>
   </body>
 </html>

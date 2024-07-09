@@ -19,11 +19,11 @@
 
 /* global styles */
 @mixin global-styles {
-  /*   *,
+  *,
   *::before,
   *::after {
     box-sizing: border-box;
-  } */
+  }
 
   a {
     text-decoration: none;
@@ -105,13 +105,13 @@
   font-weight: $font-regular;
 }
 
+@mixin logo {
+  width: 15rem;
+}
+
 /* padding */
 @mixin mobile-heading-pad {
   padding: 2.4rem 0 1.6rem 0;
-}
-
-@mixin logo {
-  height: 2.4rem;
 }
 
 @mixin desktop-heading-pad {
@@ -123,16 +123,43 @@
   border-radius: 50%;
   background-color: $divider;
   background-image: url("../../assets/images/Images/Mohan-muruge.jpg");
-  height: 2.5rem;
-  width: 2.5rem;
+  height: 3.5rem;
+  width: 3.5rem;
 }
 
 @mixin button {
   background-color: $primary-form;
   color: $background;
-  width: 100%;
   border-radius: 0.4rem;
   border: none;
-  height: 3.5rem;
   font-family: "Avenir Next Demi";
+}
+
+@mixin form {
+  border-radius: 0.4rem;
+  border: 0.1rem solid $divider;
+  background-color: $form-background;
+  padding: 1.5rem;
+  &::placeholder {
+    color: $primary-text;
+    font-size: 1.5rem;
+  }
+}
+
+@mixin title {
+  font-size: 3.5rem;
+  font-family: $font-bold;
+  color: $primary-text;
+}
+
+@mixin subtitle {
+  font-size: 2rem;
+  font-family: $font-demi;
+  color: $primary-text;
+}
+
+@mixin subtext {
+  font-size: 2rem;
+  font-family: $font-regular;
+  color: $primary-text;
 }
