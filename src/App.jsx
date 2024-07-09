@@ -6,8 +6,9 @@
 
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Nav from "./components/ComponentName/Nav/Nav";
-import Video from "./components/ComponentName/Video/Video";
+import Nav from "./components/Nav/Nav";
+import Video from "./components/Video/Video";
+import MainWrapper from "./components/MainWrapper/MainWrapper";
 
 ReactDOM.createRoot(document.getElementById("nav")).render(
   <React.StrictMode>
@@ -18,5 +19,11 @@ ReactDOM.createRoot(document.getElementById("nav")).render(
 ReactDOM.createRoot(document.getElementById("video")).render(
   <React.StrictMode>
     <Video />
+  </React.StrictMode>
+);
+
+ReactDOM.createRoot(document.getElementById("main__wrapper")).render(
+  <React.StrictMode>
+    <MainWrapper />
   </React.StrictMode>
 );
