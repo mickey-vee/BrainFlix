@@ -4,31 +4,3 @@
 
 @include global-styles;
 @include font-faces;
-
-.next-video {
-  padding: 0 1.6rem;
-  &__text {
-    @include subtitle;
-    color: $secondary-text;
-
-    padding: 1.6rem 0;
-  }
-  &__card {
-    display: flex;
-  }
-  &__image {
-    padding: 0;
-    width: 30%;
-  }
-  &__details {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  &__title {
-    @include subtitle;
-  }
-  &__author {
-    @include subtext;
-  }
-}

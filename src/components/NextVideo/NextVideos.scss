@@ -1,0 +1,33 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.next-video {
+  padding: 0 1.6rem 4rem 1.6rem;
+  &__text {
+    @include subtitle;
+    color: $secondary-text;
+
+    padding: 1.6rem 0;
+  }
+  &__card {
+    display: flex;
+    padding: 1.6rem 0;
+  }
+  &__image {
+    padding: 0;
+    width: 30%;
+    border-radius: 0.4rem;
+  }
+  &__details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 1.6rem;
+  }
+  &__title {
+    @include subtitle;
+  }
+  &__author {
+    @include subtext;
+  }
+}

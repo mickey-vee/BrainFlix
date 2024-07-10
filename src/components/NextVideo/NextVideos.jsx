@@ -1,21 +1,27 @@
 import React from "react";
 import "./NextVideos.scss";
+import videoData from "../../data/video-details.json";
+
+console.log(videoData);
+console.log(videoData[0].title);
 
 const NextVideo = () => {
   return (
     <>
-      <h2 class="next-video__text">NEXT VIDEOS</h2>
-      <div class="next-video__card">
-        <img
-          class="next-video__image"
-          src="https://unit-3-project-api-0a5620414506.herokuapp.com/images/image4.jpg"
-          alt=""
-        />
-        <div class="next-video__details">
-          <h3 class="next-video__title">Exploring Cities of Europe</h3>
-          <h3 class="next-video__author">Ryan Hernandez</h3>
+      <h2 className="next-video__text">NEXT VIDEOS</h2>
+      {videoData.map((video) => (
+        <div className="next-video__card" key={video.id}>
+          <img
+            className="next-video__image"
+            src={video.image}
+            alt={video.title}
+          />
+          <div className="next-video__details">
+            <h3 className="next-video__title">{video.title}</h3>
+            <h3 className="next-video__author">{video.channel}</h3>
+          </div>
         </div>
-      </div>
+      ))}
     </>
   );
 };

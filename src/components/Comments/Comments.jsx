@@ -1,18 +1,19 @@
 import React from "react";
 import "./Comments.scss";
+import videoData from "../../data/video-details.json";
 
 const Comments = () => {
   return (
     <>
-      <div class="comments__wrapper">
-        <div class="comments__image"></div>
-        <div class="comments__form-box">
-          <form id="form" class="form">
-            <label class="comments__label" for="comment">
+      <div className="comments__wrapper">
+        <div className="comments__image"></div>
+        <div className="comments__form-box">
+          <form id="form" className="form">
+            <label className="comments__label" for="comment">
               JOIN THE CONVERSATION
             </label>
             <textarea
-              class="comments__text"
+              className="comments__text"
               id="comment"
               name="user_comment"
               rows="6"
@@ -20,8 +21,12 @@ const Comments = () => {
               placeholder="Add a new comment"
             ></textarea>
 
-            <div class="comments__button">
-              <button type="submit" class="comments__submit" id="add-comment">
+            <div className="comments__button">
+              <button
+                type="submit"
+                className="comments__submit"
+                id="add-comment"
+              >
                 COMMENT
               </button>
             </div>

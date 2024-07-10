@@ -5,7 +5,7 @@ const Video = () => {
   return (
     <>
       <video
-        class="video__image"
+        className="video__image"
         src=""
         poster="./src/assets/images/Images/Upload-video-preview.jpg"
       ></video>
