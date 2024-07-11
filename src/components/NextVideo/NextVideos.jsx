@@ -2,8 +2,8 @@ import React from "react";
 import "./NextVideos.scss";
 import videoData from "../../data/video-details.json";
 
-console.log(videoData);
-console.log(videoData[0].title);
+const commentsArray = videoData.comments;
+console.log(commentsArray);
 
 const NextVideo = () => {
   return (

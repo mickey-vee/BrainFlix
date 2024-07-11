@@ -1,38 +1,22 @@
 import React from "react";
-import "./Comments.scss";
 import videoData from "../../data/video-details.json";
+
+const commentArray = videoData.map((commentArray) => commentArray);
+console.log(commentArray);
 
 const Comments = () => {
   return (
     <>
-      <div className="comments__wrapper">
-        <div className="comments__image"></div>
-        <div className="comments__form-box">
-          <form id="form" className="form">
-            <label className="comments__label" for="comment">
-              JOIN THE CONVERSATION
-            </label>
-            <textarea
-              className="comments__text"
-              id="comment"
-              name="user_comment"
-              rows="6"
-              cols="30"
-              placeholder="Add a new comment"
-            ></textarea>
-
-            <div className="comments__button">
-              <button
-                type="submit"
-                className="comments__submit"
-                id="add-comment"
-              >
-                COMMENT
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
+      <div className="form-comments"></div>
+      {videoData.map((video) => {
+        <div className="comments__wrapper">
+          <div className="comments__old-image"></div>
+          <div className="comments__old-wrapper">
+            <div className="comments__name-date">video.timestamp</div>
+            <p className="comments__old-text">video.comments</p>
+          </div>
+        </div>;
+      })}
     </>
   );
 };

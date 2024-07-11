@@ -4,34 +4,18 @@ import Nav from "./components/Nav/Nav";
 import Video from "./components/Video/Video";
 import MainWrapper from "./components/MainWrapper/MainWrapper";
 import NextVideo from "./components/NextVideo/NextVideos";
-import Comments from "./components/Comments/Comments";
+import Form from "./components/Form/Form";
 
-ReactDOM.createRoot(document.getElementById("nav")).render(
-  <React.StrictMode>
-    <Nav />
-  </React.StrictMode>
-);
+const makeComponent = (elementId, Component) => {
+  ReactDOM.createRoot(document.getElementById(elementId)).render(
+    <React.StrictMode>
+      <Component />
+    </React.StrictMode>
+  );
+};
 
-ReactDOM.createRoot(document.getElementById("video")).render(
-  <React.StrictMode>
-    <Video />
-  </React.StrictMode>
-);
-
-ReactDOM.createRoot(document.getElementById("main__wrapper")).render(
-  <React.StrictMode>
-    <MainWrapper />
-  </React.StrictMode>
-);
-
-ReactDOM.createRoot(document.getElementById("next-video")).render(
-  <React.StrictMode>
-    <NextVideo />
-  </React.StrictMode>
-);
-
-ReactDOM.createRoot(document.getElementById("comments")).render(
-  <React.StrictMode>
-    <Comments />
-  </React.StrictMode>
-);
+makeComponent("nav", Nav);
+makeComponent("video", Video);
+makeComponent("main__wrapper", MainWrapper);
+makeComponent("next-video", NextVideo);
+makeComponent("form", Form);
