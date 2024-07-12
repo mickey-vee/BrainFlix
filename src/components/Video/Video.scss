@@ -6,4 +6,36 @@
     padding: 0;
     width: 100%;
   }
+  &__wrapper {
+    padding: 0 1.6rem;
+  }
+
+  &__title {
+    padding: 1.6rem 0;
+    @include title;
+    @include divider;
+  }
+
+  &__detail {
+    @include divider;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1.6rem 0;
+    @include subtext;
+  }
+
+  &__detail-text {
+    padding: 1rem 0;
+    width: 50%;
+    color: $secondary-text;
+  }
+
+  &__detail-text--bold {
+    font-family: $font-demi;
+    color: $primary-text;
+  }
+  &__description {
+    @include subtext;
+    padding: 1.6rem 0;
+  }
 }

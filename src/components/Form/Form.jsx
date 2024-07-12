@@ -8,7 +8,7 @@ const Form = () => {
         <div className="form__image"></div>
         <div className="form__form-box">
           <form id="form" className="form">
-            <label className="form__label" for="form">
+            <label className="form__label" htmlFor="form">
               JOIN THE CONVERSATION
             </label>
             <textarea

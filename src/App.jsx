@@ -1,21 +1,25 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+import React, { useState } from "react";
 import Nav from "./components/Nav/Nav";
 import Video from "./components/Video/Video";
-import MainWrapper from "./components/MainWrapper/MainWrapper";
 import NextVideo from "./components/NextVideo/NextVideos";
 import Form from "./components/Form/Form";
+import videoData from "./data/video-details.json";
 
-const makeComponent = (elementId, Component) => {
-  ReactDOM.createRoot(document.getElementById(elementId)).render(
-    <React.StrictMode>
-      <Component />
-    </React.StrictMode>
+const App = () => {
+  const [currentVideo, setCurrentVideo] = useState(videoData[0]);
+
+  const handleVideoSelect = (video) => {
+    setCurrentVideo(video);
+  };
+
+  return (
+    <div>
+      <Nav />
+      <Video video={currentVideo} />
+      <Form />
+      <NextVideo videoData={videoData} onVideoSelect={handleVideoSelect} />
+    </div>
   );
 };
 
-makeComponent("nav", Nav);
-makeComponent("video", Video);
-makeComponent("main__wrapper", MainWrapper);
-makeComponent("next-video", NextVideo);
-makeComponent("form", Form);
+export default App;
