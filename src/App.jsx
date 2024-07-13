@@ -17,7 +17,11 @@ const App = () => {
       <Nav />
       <Video video={currentVideo} />
       <Form />
-      <NextVideo videoData={videoData} onVideoSelect={handleVideoSelect} />
+      <NextVideo
+        videoData={videoData}
+        onVideoSelect={handleVideoSelect}
+        currentVideo={currentVideo}
+      />
     </div>
   );
 };

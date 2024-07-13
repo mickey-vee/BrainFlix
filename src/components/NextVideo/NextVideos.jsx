@@ -1,16 +1,17 @@
 import React from "react";
 import "./NextVideos.scss";
 
-const NextVideo = ({ videoData }) => {
+const NextVideo = ({ videoData, onVideoSelect, currentVideo }) => {
   const handleClick = (video) => {
-    console.log(video);
+    onVideoSelect(video);
   };
 
   return (
-    <>
-      <div className="next-video">
-        <h2 className="next-video__text">NEXT VIDEOS</h2>
-        {videoData.map((video) => (
+    <div className="next-video">
+      <h2 className="next-video__text">NEXT VIDEOS</h2>
+      {videoData
+        .filter((video) => video.id !== currentVideo.id)
+        .map((video) => (
           <div
             onClick={() => handleClick(video)}
             className="next-video__card"
@@ -27,8 +28,7 @@ const NextVideo = ({ videoData }) => {
             </div>
           </div>
         ))}
-      </div>
-    </>
+    </div>
   );
 };
 

@@ -1,34 +1,27 @@
 import React from "react";
 import "./Video.scss";
 
-const Video = () => {
+const Video = ({ video }) => {
   return (
     <>
       <section className="video" id="video">
         <video
           className="video__image"
-          src=""
-          poster="./src/assets/images/Images/Upload-video-preview.jpg"
+          src={video.video}
+          poster={video.image}
         ></video>
         <div className="video__wrapper">
-          <h1 className="video__title">
-            The Future of Artificial Intelligence
-          </h1>
+          <h1 className="video__title">{video.title}</h1>
           <div className="video__detail">
             <span className="video__detail-text video__detail-text--bold">
-              By aiden
+              By {video.channel}
             </span>
-            <span className="video__detail-text">Views</span>
-            <span className="video__detail-text">Date</span>
-            <span className="video__detail-text">Likes</span>
+            <span className="video__detail-text">{video.views} views</span>
+            <span className="video__detail-text">{video.timestamp}</span>
+            <span className="video__detail-text">{video.likes} likes</span>
           </div>
           <div>
-            <p className="video__description">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit
-              natus consequatur quaerat, ipsa at quisquam, sapiente quasi
-              distinctio, recusandae laboriosam aperiam quam omnis officiis quas
-              nulla possimus commodi dolor perspiciatis.
-            </p>
+            <p className="video__description">{video.description}</p>
           </div>
         </div>
       </section>

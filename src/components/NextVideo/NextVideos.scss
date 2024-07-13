@@ -3,6 +3,7 @@
 
 .next-video {
   padding: 0 1.6rem 4rem 1.6rem;
+
   &__text {
     @include subtitle;
     color: $secondary-text;
