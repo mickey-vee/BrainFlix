@@ -1,22 +1,27 @@
 import React from "react";
-import videoData from "../../data/video-details.json";
+import "./Comments.scss";
 
-const commentArray = videoData.map((commentArray) => commentArray);
-console.log(commentArray);
-
-const Comments = () => {
+const Comments = ({ video }) => {
   return (
     <>
-      <div className="form-comments"></div>
-      {videoData.map((video) => {
-        <div className="comments__wrapper">
-          <div className="comments__old-image"></div>
-          <div className="comments__old-wrapper">
-            <div className="comments__name-date">video.timestamp</div>
-            <p className="comments__old-text">video.comments</p>
-          </div>
-        </div>;
-      })}
+      <div className="form-comments">
+        <div className="comments">
+          {video.comments.map((comment) => (
+            <div key={comment.id} className="comments__section">
+              <div className="comments__image"></div>
+              <div className="comments__wrapper">
+                <div className="comments__name-date-wrapper">
+                  <div className="comments__name-date">{comment.name}</div>
+                  <div className="comments__name-date comments__name-date--color">
+                    {comment.timestamp}
+                  </div>
+                </div>
+                <p className="comments__text">{comment.comment}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </>
   );
 };

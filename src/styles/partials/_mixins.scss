@@ -122,9 +122,20 @@
 @mixin avatar {
   border-radius: 50%;
   background-color: $divider;
-  background-image: url("../../assets/images/Images/Mohan-muruge.jpg");
   height: 3.5rem;
   width: 3.5rem;
+  background-size: cover;
+  background-position: center;
+}
+
+@mixin avatar-image {
+  background-image: url("../../assets/images/Images/Mohan-muruge.jpg");
+  border-radius: 50%;
+  background-color: $divider;
+  height: 3.5rem;
+  width: 3.5rem;
+  background-size: cover;
+  background-position: center;
 }
 
 @mixin button {

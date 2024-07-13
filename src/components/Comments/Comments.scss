@@ -1,0 +1,58 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/fonts" as *;
+
+.comments {
+  padding: 1.6rem;
+
+  @include tablet {
+    padding: 5rem 10rem;
+  }
+  @include desktop {
+    padding: 8rem 25rem;
+  }
+
+  &__section {
+    padding: 1.6rem 0;
+    display: flex;
+    justify-content: space-around;
+    @include divider;
+  }
+
+  &__image {
+    background-color: $divider;
+    @include avatar;
+
+    @include tablet {
+      width: 4.8rem;
+      height: 4.8rem;
+    }
+    @include desktop {
+      width: 4.8rem;
+      height: 4.8rem;
+    }
+  }
+  &__wrapper {
+    width: 88%;
+  }
+
+  &__name-date-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  &__name-date {
+    @include subtitle;
+    color: $primary-text;
+  }
+
+  &__name-date--color {
+    color: $secondary-text;
+    font-family: $font-regular;
+  }
+
+  &__text {
+    padding: 1.6rem 0;
+    @include subtext;
+  }
+}
