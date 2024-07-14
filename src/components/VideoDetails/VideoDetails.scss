@@ -11,6 +11,12 @@
     @include tablet {
       padding: 3.6rem 0 0 0;
       border: none;
+      font-size: 4rem;
+    }
+
+    @include desktop {
+      font-size: 5rem;
+      padding: 6rem 0 2rem 0;
     }
   }
 
@@ -32,6 +38,7 @@
       flex-direction: row;
       justify-content: space-between;
       padding: 0;
+      font-size: 2.3rem;
     }
     @include desktop {
       padding-right: 2rem;
@@ -51,10 +58,7 @@
 
   &__detail-text {
     padding: 1rem 0;
-
     color: $secondary-text;
-    @include tablet {
-    }
   }
 
   &__detail-text--bold {
@@ -65,13 +69,22 @@
     @include subtext;
     padding: 1.6rem 0;
 
+    @include tablet {
+      font-size: 2.5rem;
+      line-height: 3.5rem;
+    }
+
     @include desktop {
       padding-right: 2rem;
+      font-size: 2.5rem;
     }
   }
 
   &__comment-number {
     padding: 1rem 0;
     @include subtitle;
+    @include tablet {
+      font-size: 2.3rem;
+    }
   }
 }

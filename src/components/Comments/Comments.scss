@@ -53,6 +53,10 @@
   &__name-date {
     @include subtitle;
     color: $primary-text;
+
+    @include tablet {
+      font-size: 2.3rem;
+    }
   }
 
   &__name-date--color {
@@ -63,5 +67,9 @@
   &__text {
     padding-top: 1.6rem;
     @include subtext;
+
+    @include tablet {
+      font-size: 2.3rem;
+    }
   }
 }
