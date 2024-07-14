@@ -4,3 +4,10 @@
 
 @include global-styles;
 @include font-faces;
+
+.content-wrapper {
+  @include desktop {
+    display: flex;
+    padding: 0 5rem;
+  }
+}

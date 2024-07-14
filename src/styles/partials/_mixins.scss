@@ -56,55 +56,6 @@
   }
 }
 
-/* desktop & tablet text styles */
-@mixin desktop-page-header {
-  font-size: 6rem;
-  line-height: 6.8rem;
-  font-family: $font-bold;
-}
-
-@mixin desktop-section-header {
-  font-size: 6rem;
-  line-height: 4.4rem;
-  font-family: $font-bold;
-}
-
-@mixin desktop-sub-header {
-  font-size: 2.4rem;
-  line-height: 3.2rem;
-  font-family: $font-demi;
-}
-
-@mixin desktop-body-copy {
-  font-size: 1.4rem;
-  line-height: 2.2rem;
-  font-weight: $font-regular;
-}
-
-/* mobile text style */
-@mixin page-header {
-  font-size: 4rem;
-  font-family: $font-demi;
-}
-
-@mixin section-header {
-  font-size: 2.4rem;
-  line-height: 3.2rem;
-  font-family: $font-demi;
-}
-
-@mixin sub-header {
-  font-size: 2rem;
-  line-height: 2.2rem;
-  font-family: $font-demi;
-}
-
-@mixin body-copy {
-  font-size: 1.8rem;
-  line-height: 2.8rem;
-  font-weight: $font-regular;
-}
-
 @mixin logo {
   width: 15rem;
 }
@@ -173,4 +124,5 @@
   font-size: 2rem;
   font-family: $font-regular;
   color: $primary-text;
+  line-height: 3rem;
 }
