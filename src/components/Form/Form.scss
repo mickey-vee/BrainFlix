@@ -4,6 +4,9 @@
 
 .form {
   padding: 1.6rem;
+  display: flex;
+  justify-content: space-around;
+  @include divider;
 
   @include tablet {
     padding: 5rem 10rem;
@@ -13,14 +16,10 @@
   }
 
   &__wrapper {
-    padding: 1.6rem 0;
-    display: flex;
-    justify-content: space-around;
-    @include divider;
   }
 
   &__image {
-    @include avatar;
+    @include avatar-image;
     background-color: $divider;
     margin-top: 3.5rem;
 
@@ -53,6 +52,7 @@
     @include divider;
     border-radius: 0.4rem;
     margin: 1rem 0 2rem 0;
+    font-family: $font-regular;
 
     resize: none;
     @include form;
@@ -68,6 +68,9 @@
   }
 
   &__submit {
+    display: flex;
+    align-items: center;
+    padding: 0 1.6rem;
     width: 100%;
     height: 5rem;
     font-family: $font-demi;
@@ -81,44 +84,10 @@
     }
   }
 
-  &__old-image {
-    margin-top: 1rem;
-    width: 3.6rem;
-    height: 3.6rem;
-    background-size: cover;
-    background-position: center;
-    border-radius: 50%;
-
-    @include tablet {
-      width: 4.8rem;
-      height: 4.8rem;
-    }
-    @include desktop {
-      width: 4.8rem;
-      height: 4.8rem;
-    }
-  }
-  &__old-wrapper {
-    width: 88%;
-  }
-  &__name-date {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  &__old-name {
-    @include sub-header;
-    padding: 1rem 0;
-  }
-  &__old-date {
-    font-size: 2rem;
-    font-weight: 200;
-
-    padding: 1rem 0;
-  }
-  &__old-text {
-    @include body-copy;
+  &__button-text {
+    margin: auto;
+    font-family: $font-demi;
+    font-size: 1.8rem;
   }
 
   &__required {

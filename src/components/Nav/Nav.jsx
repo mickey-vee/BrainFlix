@@ -14,27 +14,29 @@ const Nav = () => {
             />
           </a>
         </div>
-
-        <div className="nav__search-bar">
-          <form className="nav__form">
-            <input
-              className="nav__form-box"
-              type="text"
-              name="search"
-              id="search"
-              placeholder="Search"
+        <div className="nav__wrapper">
+          <div className="nav__search-bar">
+            <form className="nav__form">
+              <input
+                className="nav__form-box"
+                type="text"
+                name="search"
+                id="search"
+                placeholder="Search"
+              />
+            </form>
+            <div className="nav__avatar-mobile"></div>
+          </div>
+          <button className="nav__button">
+            <img
+              src="./src/assets/images/Icons/upload.svg"
+              alt="Upload Image"
+              className="upload-image"
             />
-          </form>
-          <div className="nav__avatar"></div>
+            <span className="nav__button-text">UPLOAD</span>
+          </button>
+          <div className="nav__avatar-tablet"></div>
         </div>
-        <button className="nav__button">
-          <img
-            src="./src/assets/images/Icons/upload.svg"
-            alt="Upload Image"
-            className="upload-image"
-          />
-          <span className="nav__button-text">UPLOAD</span>
-        </button>
       </nav>
     </>
   );

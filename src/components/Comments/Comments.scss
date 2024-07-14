@@ -21,6 +21,7 @@
 
   &__image {
     background-color: $divider;
+    margin-right: 1rem;
     @include avatar;
 
     @include tablet {

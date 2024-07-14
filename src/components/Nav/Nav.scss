@@ -7,37 +7,85 @@
   align-items: center;
   padding: 0 1.6rem;
 
+  @include tablet {
+    flex-direction: row;
+    padding: 0 3.6rem;
+    justify-content: space-around;
+  }
+
+  @include desktop {
+  }
+
   &__logo {
     @include logo;
     padding: 1.6rem 0;
   }
 
-  &__avatar {
-    @include avatar;
+  &__avatar-mobile {
+    @include avatar-image;
+    @include tablet {
+      display: none;
+    }
+  }
+
+  &__avatar-tablet {
+    display: none;
+    @include avatar-image;
+
+    @include tablet {
+      display: block;
+    }
+  }
+
+  &__wrapper {
+    width: 100%;
+
+    @include tablet {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 2rem;
+    }
   }
   &__search-bar {
     display: flex;
-    align-items: center;
     width: 100%;
     margin: 1.6rem 0;
+    @include tablet {
+      width: 25rem;
+    }
   }
   &__form {
     flex: 1;
-    height: 3.5rem;
+    height: 4.5rem;
+    width: 100%;
+    @include tablet {
+      flex: none;
+    }
   }
   &__form-box {
     width: 95%;
-    height: 100%;
     @include form;
+    @include tablet {
+      width: 25rem;
+      height: 4.8rem;
+    }
   }
 
   &__button {
     display: flex;
     align-items: center;
-    height: 5.5rem;
+    height: 5rem;
     width: 100%;
     margin-bottom: 1.6rem;
     @include button;
+
+    @include tablet {
+      margin: 0;
+      width: 20rem;
+
+      height: 5rem;
+    }
   }
   &__button-text {
     margin: auto;
