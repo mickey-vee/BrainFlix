@@ -1,73 +1,17 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
-.test {
-  width: 10rem;
-}
-
 .video {
+  @include desktop {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+  }
   &__image {
     padding: 0;
     width: 100%;
-  }
-  &__wrapper {
-    padding: 0 1.6rem;
-
-    @include tablet {
-      padding: 0 3.6rem;
+    @include desktop {
+      width: 80%;
     }
-  }
-
-  &__title {
-    padding: 1.6rem 0;
-    @include title;
-    @include divider;
-
-    @include tablet {
-      padding: 3.6rem 0 0 0;
-      border: none;
-    }
-  }
-
-  &__detail {
-    padding: 1.6rem 0;
-    @include subtext;
-    display: flex;
-    flex-direction: row;
-    @include divider;
-
-    @include tablet {
-      flex-direction: row;
-      justify-content: space-between;
-      padding: 0;
-    }
-  }
-
-  &__detail-wrapper {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    @include tablet {
-      flex-direction: row;
-      width: auto;
-      gap: 4rem;
-    }
-  }
-
-  &__detail-text {
-    padding: 1rem 0;
-
-    color: $secondary-text;
-    @include tablet {
-    }
-  }
-
-  &__detail-text--bold {
-    font-family: $font-demi;
-    color: $primary-text;
-  }
-  &__description {
-    @include subtext;
-    padding: 1.6rem 0;
   }
 }

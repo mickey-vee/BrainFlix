@@ -19,7 +19,7 @@ const App = () => {
       <Nav />
       <Video video={currentVideo} />
       <div className="content-wrapper">
-        <div>
+        <div className="detail-form">
           <VideoDetails video={currentVideo} />
           <Form />
           <Comments video={currentVideo} />

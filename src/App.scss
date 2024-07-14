@@ -8,6 +8,18 @@
 .content-wrapper {
   @include desktop {
     display: flex;
-    padding: 0 5rem;
+    padding: 0 10rem;
+  }
+}
+
+.detail-form {
+  @include desktop {
+    flex: 60%;
+  }
+}
+
+.next-video {
+  @include desktop {
+    flex: 40%;
   }
 }
