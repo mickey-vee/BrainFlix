@@ -6,7 +6,7 @@
   padding: 1.6rem;
 
   @include tablet {
-    padding: 5rem 10rem;
+    padding: 5rem 3.6rem;
   }
   @include desktop {
     padding: 8rem 25rem;
@@ -15,8 +15,12 @@
   &__section {
     padding: 1.6rem 0;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     @include divider;
+
+    @include tablet {
+      justify-content: flex-start;
+    }
   }
 
   &__image {
@@ -27,6 +31,7 @@
     @include tablet {
       width: 4.8rem;
       height: 4.8rem;
+      margin: 0;
     }
     @include desktop {
       width: 4.8rem;
@@ -35,6 +40,9 @@
   }
   &__wrapper {
     width: 88%;
+    @include tablet {
+      padding-left: 2rem;
+    }
   }
 
   &__name-date-wrapper {

@@ -9,13 +9,28 @@
   @include divider;
 
   @include tablet {
-    padding: 5rem 10rem;
+    padding: 3.6rem;
+    align-items: center;
   }
   @include desktop {
     padding: 8rem 25rem;
   }
 
   &__wrapper {
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+
+  &__input-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      width: 100%;
+      padding: 0 2rem;
+    }
   }
 
   &__image {
@@ -26,6 +41,7 @@
     @include tablet {
       width: 4.8rem;
       height: 4.8rem;
+      margin: 0;
     }
     @include desktop {
       width: 4.8rem;
@@ -35,6 +51,9 @@
 
   &__form-box {
     width: 88%;
+    @include tablet {
+      width: 100%;
+    }
   }
 
   &__label {
@@ -51,19 +70,24 @@
     width: 100%;
     @include divider;
     border-radius: 0.4rem;
-    margin: 1rem 0 2rem 0;
     font-family: $font-regular;
+    margin: 1rem 0 2rem 0;
 
     resize: none;
     @include form;
     &::placeholder {
       font-size: 1.8rem;
     }
+
+    @include tablet {
+      height: 5rem;
+      margin: 0;
+    }
   }
   &__button {
     @include tablet {
       display: flex;
-      justify-content: flex-end;
+      align-items: flex-end;
     }
   }
 
@@ -80,7 +104,7 @@
       cursor: pointer;
     }
     @include tablet {
-      width: 30%;
+      width: 100%;
     }
   }
 
