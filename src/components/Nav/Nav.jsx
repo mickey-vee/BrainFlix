@@ -6,7 +6,7 @@ const Nav = () => {
     <>
       <nav className="nav" id="nav">
         <div>
-          <a href="./index.html">
+          <a href="/">
             <img
               className="nav__logo"
               src="./src/assets/images/Logo/BrainFlix-logo.svg"
