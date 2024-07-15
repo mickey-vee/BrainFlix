@@ -5,33 +5,143 @@
   padding: 1.6rem;
   border-top: 0.1rem solid $divider;
 
+  @include tablet {
+    padding: 0 3.6rem;
+  }
+
   &__title {
     @include title;
     padding: 1.6rem 0;
+
+    @include tablet {
+      @include divider;
+
+      padding: 3.6rem 0;
+    }
   }
 
   &__subtitle {
     @include subtitle;
     color: $secondary-text;
+
+    @include tablet {
+      padding-top: 3.6rem;
+    }
   }
+
   &__image {
     width: 100%;
     border-radius: 0.4rem;
     padding: 1.6rem 0;
+
+    @include tablet {
+      width: 50%;
+    }
+  }
+
+  &__wrapper {
+    @include tablet {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__input-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      width: 100%;
+    }
+  }
+
+  &__label {
+    @include subtitle;
+    color: $secondary-text;
+
+    @include tablet {
+      font-size: 2rem;
+    }
+  }
+
+  &__text {
+    width: 100%;
+    @include divider;
+    border-radius: 0.4rem;
+    font-family: $font-regular;
+    margin: 1rem 0 2rem 0;
+    resize: none;
+    overflow: hidden;
+    @include form;
+    &::placeholder {
+      font-size: 1.8rem;
+    }
+
+    @include tablet {
+      display: flex;
+      height: 6rem;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    @include tablet {
+      flex-direction: row;
+      width: 100%;
+      border-top: 0.1rem solid $divider;
+      padding: 3.6rem 0;
+      justify-content: flex-end;
+    }
+  }
+
+  &__submit {
+    display: flex;
+    align-items: center;
+    padding: 0 1.6rem;
+    width: 100%;
+    height: 5rem;
+    font-family: $font-demi;
+    font-size: 2rem;
+    @include button;
+    &:hover {
+      cursor: pointer;
+    }
+    @include tablet {
+      width: 20%;
+      height: 6rem;
+    }
+  }
+
+  &__button-text {
+    margin: auto;
+    font-family: $font-demi;
+    font-size: 1.8rem;
+  }
+
+  &__required {
+    border: 0.1rem solid #d22d2d;
   }
 }
 
 .cancel-button {
   all: unset;
-  padding: 4rem 0;
+  align-items: center;
+  width: 100%;
+  height: 5rem;
   display: flex;
   width: 100%;
   justify-content: center;
   color: $primary-form;
   font-family: $font-demi;
-  font-size: 1.8rem;
+  font-size: 2rem;
+
+  @include tablet {
+    width: 20%;
+  }
 
   &__text {
-    padding-left: 2rem;
+    padding-left: 2.5rem;
   }
 }

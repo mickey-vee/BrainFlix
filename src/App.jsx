@@ -40,6 +40,28 @@ const App = () => {
             </div>
           }
         />
+        <Route
+          path={`/${currentVideo.id}`}
+          element={
+            <div>
+              <Nav />
+              <Video video={currentVideo} />
+              <div className="content-wrapper">
+                <div className="detail-form">
+                  <VideoDetails video={currentVideo} />
+                  <Form />
+                  <Comments video={currentVideo} />
+                </div>
+                <NextVideo
+                  videoData={videoData}
+                  onVideoSelect={handleVideoSelect}
+                  currentVideo={currentVideo}
+                />
+              </div>
+            </div>
+          }
+        />
+
         <Route path="Upload" element={<Upload video={currentVideo} />} />
       </Routes>
     </BrowserRouter>
