@@ -40,7 +40,7 @@ const App = () => {
             </div>
           }
         />
-        <Route path="/Upload" element={<Upload video={currentVideo} />} />
+        <Route path="Upload" element={<Upload video={currentVideo} />} />
       </Routes>
     </BrowserRouter>
   );
