@@ -7,7 +7,7 @@ const Nav = () => {
     <>
       <nav className="nav" id="nav">
         <div>
-          <Link to="/">
+          <Link to="/" className="link-wraper">
             <img
               className="nav__logo"
               src="./src/assets/images/Logo/BrainFlix-logo.svg"

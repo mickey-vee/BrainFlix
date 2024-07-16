@@ -1,6 +1,7 @@
 import React from "react";
 import "./Upload.scss";
 import Nav from "../../../src/components/Nav/Nav.jsx";
+import { Link } from "react-router-dom";
 
 const Upload = ({ video }) => {
   return (
@@ -41,15 +42,22 @@ const Upload = ({ video }) => {
           <button className="cancel-button">
             <span className="cancel-button__text">CANCEL</span>
           </button>
-          <button type="submit" className="upload__submit" id="add-comment">
-            {" "}
-            <img
-              src="./src/assets/images/Icons/publish.svg"
-              alt="Upload Image"
-              className="upload-image"
-            />{" "}
-            <span className="upload__button-text">PUBLISH</span>
-          </button>
+          <Link to={"/"} className="link-wrapper">
+            <button
+              className="upload__submit"
+              id="upload-video"
+              onClick={() => {
+                alert("Video has been uploaded");
+              }}
+            >
+              <img
+                src="./src/assets/images/Icons/publish.svg"
+                alt="Upload Image"
+                className="upload-image"
+              />
+              <span className="upload__button-text">PUBLISH</span>
+            </button>
+          </Link>
         </div>
       </div>
     </>
