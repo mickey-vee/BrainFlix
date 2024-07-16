@@ -36,7 +36,9 @@
   }
 
   &__desktop-wrapper {
-    width: 60%;
+    @include desktop {
+      width: 60%;
+    }
   }
 
   &__subtitle {

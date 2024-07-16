@@ -28,7 +28,7 @@ const Nav = () => {
             </form>
             <div className="nav__avatar-mobile"></div>
           </div>
-          <Link to="Upload">
+          <Link to="/upload">
             <button className="nav__button">
               <img
                 src="./src/assets/images/Icons/upload.svg"

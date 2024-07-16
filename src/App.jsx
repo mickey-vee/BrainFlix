@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Nav from "./components/Nav/Nav";
 import Video from "./components/Video/Video";
 import VideoDetails from "./components/VideoDetails/VideoDetails";
@@ -7,7 +7,32 @@ import Form from "./components/Form/Form";
 import videoData from "./data/video-details.json";
 import Comments from "./components/Comments/Comments";
 import Upload from "./pages/Upload/Upload";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
+
+const VideoPage = ({ videoData, handleVideoSelect }) => {
+  const { id } = useParams();
+  const currentVideo =
+    videoData.find((video) => video.id === id) || videoData[0];
+
+  return (
+    <div>
+      <Nav />
+      <Video video={currentVideo} />
+      <div className="content-wrapper">
+        <div className="detail-form">
+          <VideoDetails video={currentVideo} />
+          <Form />
+          <Comments video={currentVideo} />
+        </div>
+        <NextVideo
+          videoData={videoData}
+          onVideoSelect={handleVideoSelect}
+          currentVideo={currentVideo}
+        />
+      </div>
+    </div>
+  );
+};
 
 const App = () => {
   const [currentVideo, setCurrentVideo] = useState(videoData[0]);
@@ -22,47 +47,22 @@ const App = () => {
         <Route
           path="/"
           element={
-            <div>
-              <Nav />
-              <Video video={currentVideo} />
-              <div className="content-wrapper">
-                <div className="detail-form">
-                  <VideoDetails video={currentVideo} />
-                  <Form />
-                  <Comments video={currentVideo} />
-                </div>
-                <NextVideo
-                  videoData={videoData}
-                  onVideoSelect={handleVideoSelect}
-                  currentVideo={currentVideo}
-                />
-              </div>
-            </div>
+            <VideoPage
+              videoData={videoData}
+              handleVideoSelect={handleVideoSelect}
+            />
           }
         />
         <Route
-          path={`/${currentVideo.id}`}
+          path="/video/:id"
           element={
-            <div>
-              <Nav />
-              <Video video={currentVideo} />
-              <div className="content-wrapper">
-                <div className="detail-form">
-                  <VideoDetails video={currentVideo} />
-                  <Form />
-                  <Comments video={currentVideo} />
-                </div>
-                <NextVideo
-                  videoData={videoData}
-                  onVideoSelect={handleVideoSelect}
-                  currentVideo={currentVideo}
-                />
-              </div>
-            </div>
+            <VideoPage
+              videoData={videoData}
+              handleVideoSelect={handleVideoSelect}
+            />
           }
         />
-
-        <Route path="Upload" element={<Upload video={currentVideo} />} />
+        <Route path="/upload" element={<Upload video={currentVideo} />} />
       </Routes>
     </BrowserRouter>
   );
