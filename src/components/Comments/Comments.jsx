@@ -22,14 +22,12 @@ const Comments = () => {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    if (id) {
-      const fetchComments = async () => {
-        const fetchedComments = await getComments(id);
-        setComments(fetchedComments);
-      };
-
-      fetchComments();
-    }
+    const fetchComments = async () => {
+      const videoId = id || "84e96018-4022-434e-80bf-000ce4cd12b8";
+      const response = await getComments(videoId);
+      setComments(response);
+    };
+    fetchComments();
   }, [id]);
 
   const sortedComments = comments.sort((a, b) => b.timestamp - a.timestamp);
