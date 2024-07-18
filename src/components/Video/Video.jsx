@@ -3,31 +3,23 @@ import "./Video.scss";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
-const urlMaker = (videoId) => {
-  return `https://unit-3-project-api-0a5620414506.herokuapp.com/videos/${videoId}?api_key=%3Cyour_api_key_here`;
-};
-
-const getVideo = async (videoId) => {
-  const url = urlMaker(videoId);
-  try {
-    const response = await axios.get(url);
-    return response.data;
-  } catch (error) {
-    console.log(error);
-  }
-};
+const api = "56371e22-50ed-4918-a370-af4616c10a37";
 
 const Video = () => {
   const { id } = useParams();
-  const [currentVideo, setCurrentVideo] = useState(
-    "84e96018-4022-434e-80bf-000ce4cd12b8"
-  );
+  const [currentVideo, setCurrentVideo] = useState([]);
 
   useEffect(() => {
     const fetchVideo = async () => {
       const videoId = id || "84e96018-4022-434e-80bf-000ce4cd12b8";
-      const fetchedVideo = await getVideo(videoId);
-      setCurrentVideo(fetchedVideo);
+      try {
+        const response = await axios.get(
+          `https://unit-3-project-api-0a5620414506.herokuapp.com/videos/${videoId}?api_key=${api}`
+        );
+        setCurrentVideo(response.data);
+      } catch (error) {
+        console.log(error);
+      }
     };
     fetchVideo();
   }, [id]);
