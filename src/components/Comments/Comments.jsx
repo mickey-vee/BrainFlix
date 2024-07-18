@@ -1,10 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Comments.scss";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
-const Comments = ({ video }) => {
-  const sortedComments = [...video.comments].sort(
-    (a, b) => b.timestamp - a.timestamp
-  );
+const urlMaker = (videoId) => {
+  return `https://unit-3-project-api-0a5620414506.herokuapp.com/videos/${videoId}?api_key=%3Cyour_api_key_here`;
+};
+
+const getComments = async (videoId) => {
+  const url = urlMaker(videoId);
+  try {
+    const response = await axios.get(url);
+    return response.data.comments;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const Comments = () => {
+  const { id } = useParams();
+  const [comments, setComments] = useState([]);
+
+  useEffect(() => {
+    if (id) {
+      const fetchComments = async () => {
+        const fetchedComments = await getComments(id);
+        setComments(fetchedComments);
+      };
+
+      fetchComments();
+    }
+  }, [id]);
+
+  const sortedComments = comments.sort((a, b) => b.timestamp - a.timestamp);
 
   return (
     <div className="form-comments">

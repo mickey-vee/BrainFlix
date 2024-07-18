@@ -173,13 +173,6 @@
   @include tablet {
     width: 25%;
   }
-
-  &__text {
-    padding-left: 2.5rem;
-    @include tablet {
-      padding: 0;
-    }
-  }
 }
 
 .link-wrapper {
