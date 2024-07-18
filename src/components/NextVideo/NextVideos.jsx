@@ -1,24 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./NextVideos.scss";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import axios from "axios";
 
-const NextVideo = ({ videoData, onVideoSelect, currentVideo }) => {
-  const handleClick = (video) => {
-    onVideoSelect(video);
-  };
+const urlMaker = () => {
+  return `https://unit-3-project-api-0a5620414506.herokuapp.com/videos?api_key=%3Cyour_api_key_here%3E`;
+};
+
+const getNextVideo = async () => {
+  const url = urlMaker();
+  try {
+    const response = await axios.get(url);
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const NextVideo = () => {
+  const { id } = useParams();
+  const [nextVideo, setNextVideo] = useState([]);
+
+  useEffect(() => {
+    const fetchVideo = async () => {
+      const response = await getNextVideo();
+      setNextVideo(response);
+    };
+    fetchVideo();
+  }, [id]);
+
+  const currentVideoId = id || "84e96018-4022-434e-80bf-000ce4cd12b8";
 
   return (
     <div className="next-video">
       <h2 className="next-video__text">NEXT VIDEOS</h2>
-      {videoData
-        .filter((video) => video.id !== currentVideo.id)
+      {nextVideo
+        .filter((video) => video.id !== currentVideoId)
         .map((video) => {
           return (
             <Link to={`/video/${video.id}`} key={video.id}>
-              <div
-                onClick={() => handleClick(video)}
-                className="next-video__card"
-              >
+              <div className="next-video__card">
                 <img
                   className="next-video__image"
                   src={video.image}

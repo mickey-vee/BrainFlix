@@ -9,27 +9,24 @@ import Comments from "./components/Comments/Comments";
 import Upload from "./pages/Upload/Upload";
 import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 
-const VideoPage = ({ videoData, handleVideoSelect }) => {
+const VideoPage = () => {
   const { id } = useParams();
 
-  const currentVideo =
-    videoData.find((video) => video.id === id) || videoData[0];
+  const currentVideo = videoData.find(
+    (video) => video.id === id || "84e96018-4022-434e-80bf-000ce4cd12b8"
+  );
 
   return (
     <>
       <Nav />
-      <Video video={currentVideo} />
+      <Video />
       <div className="content-wrapper">
         <div className="detail-form">
           <VideoDetails video={currentVideo} />
           <Form />
           <Comments />
         </div>
-        <NextVideo
-          videoData={videoData}
-          onVideoSelect={handleVideoSelect}
-          currentVideo={currentVideo}
-        />
+        <NextVideo />
       </div>
     </>
   );
