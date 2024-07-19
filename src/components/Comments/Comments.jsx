@@ -3,20 +3,6 @@ import "./Comments.scss";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
-const urlMaker = (videoId) => {
-  return `https://unit-3-project-api-0a5620414506.herokuapp.com/videos/${videoId}?api_key=%3Cyour_api_key_here`;
-};
-
-const getComments = async (videoId) => {
-  const url = urlMaker(videoId);
-  try {
-    const response = await axios.get(url);
-    return response.data.comments;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 const Comments = () => {
   const { id } = useParams();
   const [comments, setComments] = useState([]);
@@ -24,8 +10,10 @@ const Comments = () => {
   useEffect(() => {
     const fetchComments = async () => {
       const videoId = id || "84e96018-4022-434e-80bf-000ce4cd12b8";
-      const response = await getComments(videoId);
-      setComments(response);
+      const response = await axios.get(
+        `https://unit-3-project-api-0a5620414506.herokuapp.com/videos/${videoId}?api_key=%3Cyour_api_key_here`
+      );
+      setComments(response.data.comments);
     };
     fetchComments();
   }, [id]);
