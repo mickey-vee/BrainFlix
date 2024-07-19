@@ -5,7 +5,7 @@ import axios from "axios";
 
 const api = "56371e22-50ed-4918-a370-af4616c10a37";
 
-const NextVideo = () => {
+const NextVideo = ({ defaultVideoId }) => {
   const { id } = useParams();
   const [nextVideo, setNextVideo] = useState([]);
 
@@ -19,7 +19,7 @@ const NextVideo = () => {
     fetchVideo();
   }, [id]);
 
-  const currentVideoId = id || "84e96018-4022-434e-80bf-000ce4cd12b8";
+  const currentVideoId = id;
 
   return (
     <div className="next-video">

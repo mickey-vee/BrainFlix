@@ -9,16 +9,42 @@ import Upload from "./pages/Upload/Upload";
 import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import axios from "axios";
 
+const api = "56371e22-50ed-4918-a370-af4616c10a37";
+
 const VideoPage = () => {
+  const [videoId, setVideoId] = useState();
+  const { id } = useParams();
+
+  useEffect(() => {
+    const fetchId = async () => {
+      try {
+        const response = await axios.get(
+          `https://unit-3-project-api-0a5620414506.herokuapp.com/videos?api_key=${api}`
+        );
+        const fetchedVideoId = response.data[0].id;
+        setVideoId(fetchedVideoId);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchId();
+  }, []);
+
+  const defaultVideoId = id || videoId;
+
+  if (!defaultVideoId) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <>
-      <Nav />
-      <Video />
+      <Nav defaultVideoId={defaultVideoId} />
+      <Video defaultVideoId={defaultVideoId} />
       <div className="content-wrapper">
         <div className="detail-form">
-          <VideoDetails />
+          <VideoDetails defaultVideoId={defaultVideoId} />
           <Form />
-          <Comments />
+          <Comments defaultVideoId={defaultVideoId} />
         </div>
         <NextVideo />
       </div>
