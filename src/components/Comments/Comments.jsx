@@ -3,6 +3,8 @@ import "./Comments.scss";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
+const api = "56371e22-50ed-4918-a370-af4616c10a37";
+
 const Comments = () => {
   const { id } = useParams();
   const [comments, setComments] = useState([]);
@@ -11,7 +13,7 @@ const Comments = () => {
     const fetchComments = async () => {
       const videoId = id || "84e96018-4022-434e-80bf-000ce4cd12b8";
       const response = await axios.get(
-        `https://unit-3-project-api-0a5620414506.herokuapp.com/videos/${videoId}?api_key=%3Cyour_api_key_here`
+        `https://unit-3-project-api-0a5620414506.herokuapp.com/videos/${videoId}?api_key=${api}`
       );
       setComments(response.data.comments);
     };

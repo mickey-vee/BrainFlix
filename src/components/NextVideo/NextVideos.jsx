@@ -3,6 +3,8 @@ import "./NextVideos.scss";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
+const api = "56371e22-50ed-4918-a370-af4616c10a37";
+
 const NextVideo = () => {
   const { id } = useParams();
   const [nextVideo, setNextVideo] = useState([]);
@@ -10,7 +12,7 @@ const NextVideo = () => {
   useEffect(() => {
     const fetchVideo = async () => {
       const response = await axios.get(
-        `https://unit-3-project-api-0a5620414506.herokuapp.com/videos?api_key=%3Cyour_api_key_here%3E`
+        `https://unit-3-project-api-0a5620414506.herokuapp.com/videos?api_key=${api}`
       );
       setNextVideo(response.data);
     };
