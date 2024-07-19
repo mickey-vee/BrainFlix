@@ -1,5 +1,6 @@
 import React from "react";
 import "./Form.scss";
+import CommentIcon from "../../assets/images/Icons/add_comment.svg";
 
 const Form = () => {
   return (
@@ -26,7 +27,7 @@ const Form = () => {
               <button type="submit" className="form__submit" id="add-comment">
                 {" "}
                 <img
-                  src="./src/assets/images/Icons/add_comment.svg"
+                  src={CommentIcon}
                   alt="Upload Image"
                   className="upload-image"
                 />{" "}

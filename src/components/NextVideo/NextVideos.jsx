@@ -11,38 +11,38 @@ const NextVideo = ({ defaultVideoId }) => {
 
   useEffect(() => {
     const fetchVideo = async () => {
-      const response = await axios.get(
-        `https://unit-3-project-api-0a5620414506.herokuapp.com/videos?api_key=${api}`
-      );
-      setNextVideo(response.data);
+      try {
+        const response = await axios.get(
+          `https://unit-3-project-api-0a5620414506.herokuapp.com/videos?api_key=${api}`
+        );
+        setNextVideo(response.data);
+      } catch (error) {
+        console.log(error);
+      }
     };
     fetchVideo();
   }, [id]);
-
-  const currentVideoId = id;
 
   return (
     <div className="next-video">
       <h2 className="next-video__text">NEXT VIDEOS</h2>
       {nextVideo
-        .filter((video) => video.id !== currentVideoId)
-        .map((video) => {
-          return (
-            <Link to={`/video/${video.id}`} key={video.id}>
-              <div className="next-video__card">
-                <img
-                  className="next-video__image"
-                  src={video.image}
-                  alt={video.title}
-                />
-                <div className="next-video__details">
-                  <h3 className="next-video__title">{video.title}</h3>
-                  <h3 className="next-video__author">{video.channel}</h3>
-                </div>
+        .filter((video) => video.id !== defaultVideoId)
+        .map((video) => (
+          <Link to={`/video/${video.id}`} key={video.id}>
+            <div className="next-video__card">
+              <img
+                className="next-video__image"
+                src={video.image}
+                alt={video.title}
+              />
+              <div className="next-video__details">
+                <h3 className="next-video__title">{video.title}</h3>
+                <h3 className="next-video__author">{video.channel}</h3>
               </div>
-            </Link>
-          );
-        })}
+            </div>
+          </Link>
+        ))}
     </div>
   );
 };

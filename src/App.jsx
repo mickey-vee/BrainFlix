@@ -13,7 +13,6 @@ const api = "56371e22-50ed-4918-a370-af4616c10a37";
 
 const VideoPage = () => {
   const [videoId, setVideoId] = useState();
-  const { id } = useParams();
 
   useEffect(() => {
     const fetchId = async () => {
@@ -30,7 +29,7 @@ const VideoPage = () => {
     fetchId();
   }, []);
 
-  const defaultVideoId = id || videoId;
+  const defaultVideoId = videoId;
 
   if (!defaultVideoId) {
     return <div>Loading...</div>;
@@ -46,7 +45,7 @@ const VideoPage = () => {
           <Form />
           <Comments defaultVideoId={defaultVideoId} />
         </div>
-        <NextVideo />
+        <NextVideo defaultVideoId={defaultVideoId} />
       </div>
     </>
   );

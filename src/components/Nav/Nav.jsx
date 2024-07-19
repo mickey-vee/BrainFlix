@@ -1,6 +1,8 @@
 import React from "react";
 import "./Nav.scss";
 import { Link } from "react-router-dom";
+import Logo from "../../assets/images/Logo/BrainFlix-logo.svg";
+import UploadIcon from "../../assets/images/Icons/upload.svg";
 
 const Nav = () => {
   return (
@@ -8,11 +10,7 @@ const Nav = () => {
       <nav className="nav" id="nav">
         <div>
           <Link to="/" className="link-wraper">
-            <img
-              className="nav__logo"
-              src="./src/assets/images/Logo/BrainFlix-logo.svg"
-              alt="BrainFlix Logo"
-            />
+            <img className="nav__logo" src={Logo} alt="BrainFlix Logo" />
           </Link>
         </div>
         <div className="nav__wrapper">
@@ -31,7 +29,7 @@ const Nav = () => {
           <Link to="/upload">
             <button className="nav__button">
               <img
-                src="./src/assets/images/Icons/upload.svg"
+                src={UploadIcon}
                 alt="Upload Image"
                 className="upload-image"
               />
