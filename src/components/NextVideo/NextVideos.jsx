@@ -3,28 +3,16 @@ import "./NextVideos.scss";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
-const urlMaker = () => {
-  return `https://unit-3-project-api-0a5620414506.herokuapp.com/videos?api_key=%3Cyour_api_key_here%3E`;
-};
-
-const getNextVideo = async () => {
-  const url = urlMaker();
-  try {
-    const response = await axios.get(url);
-    return response.data;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 const NextVideo = () => {
   const { id } = useParams();
   const [nextVideo, setNextVideo] = useState([]);
 
   useEffect(() => {
     const fetchVideo = async () => {
-      const response = await getNextVideo();
-      setNextVideo(response);
+      const response = await axios.get(
+        `https://unit-3-project-api-0a5620414506.herokuapp.com/videos?api_key=%3Cyour_api_key_here%3E`
+      );
+      setNextVideo(response.data);
     };
     fetchVideo();
   }, [id]);
