@@ -4,20 +4,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
-const urlMaker = (videoId) => {
-  return `https://unit-3-project-api-0a5620414506.herokuapp.com/videos/${videoId}?api_key=%3Cyour_api_key_here`;
-};
-
-const getDetails = async (videoId) => {
-  try {
-    const url = urlMaker(videoId);
-    const response = await axios.get(url);
-    return response.data;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 const VideoDetails = () => {
   const { id } = useParams();
   const [details, setDetails] = useState(
@@ -27,8 +13,10 @@ const VideoDetails = () => {
   useEffect(() => {
     const fetchDetails = async () => {
       const videoId = id || "84e96018-4022-434e-80bf-000ce4cd12b8";
-      const fetchedDetails = await getDetails(videoId); /*  */
-      setDetails(fetchedDetails);
+      const response = await axios.get(
+        `https://unit-3-project-api-0a5620414506.herokuapp.com/videos/${videoId}?api_key=%3Cyour_api_key_here`
+      );
+      setDetails(response.data);
     };
     fetchDetails();
   }, [id]);

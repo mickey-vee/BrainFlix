@@ -8,6 +8,9 @@ import videoData from "./data/video-details.json";
 import Comments from "./components/Comments/Comments";
 import Upload from "./pages/Upload/Upload";
 import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
+import axios from "axios";
+
+const api = "56371e22-50ed-4918-a370-af4616c10a37";
 
 const VideoPage = () => {
   const { id } = useParams();
@@ -34,6 +37,26 @@ const VideoPage = () => {
 
 const App = () => {
   const [currentVideo, setCurrentVideo] = useState(videoData[0]);
+  const { id } = useParams();
+
+  useEffect(() => {
+    const fetchVideo = async () => {
+      try {
+        const response = await axios.get(
+          `https://unit-3-project-api-0a5620414506.herokuapp.com/videos?api_key=${api}`
+        );
+        setCurrentVideo(response.data);
+      } catch (error) {}
+    };
+    fetchVideo();
+  }, [id]);
+
+  if (!currentVideo.length) {
+    return <>Loading...</>;
+  }
+
+  const defaultVideo = currentVideo[0].id;
+  console.log(defaultVideo);
 
   const handleVideoSelect = (video) => {
     setCurrentVideo(video);
