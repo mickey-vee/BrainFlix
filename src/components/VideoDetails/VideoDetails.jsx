@@ -31,42 +31,45 @@ const VideoDetails = () => {
     day: "numeric",
   });
 
-  return (
-    <>
-      <div className="video__wrapper">
-        <h1 className="video__title">{details.title}</h1>
-        <div className="video__detail">
-          <div className="video__detail-wrapper">
-            <span className="video__detail-text video__detail-text--bold">
-              By {details.channel}
-            </span>
-            <span className="video__detail-text">{formattedDate}</span>
+  if (details.comments) {
+    return (
+      <>
+        <div className="video__wrapper">
+          <h1 className="video__title">{details.title}</h1>
+          <div className="video__detail">
+            <div className="video__detail-wrapper">
+              <span className="video__detail-text video__detail-text--bold">
+                By {details.channel}
+              </span>
+              <span className="video__detail-text">{formattedDate}</span>
+            </div>
+            <div className="video__detail-wrapper">
+              <span className="video__detail-text">
+                <img
+                  src="../../../src/assets/images/Icons/views.svg"
+                  alt="views icon"
+                />
+                {` ${details.views}`}
+              </span>
+              <span className="video__detail-text">
+                <img
+                  src="../../../src/assets/images/Icons/likes.svg"
+                  alt="likes icon"
+                />
+                {` ${details.likes}`}
+              </span>
+            </div>
           </div>
-          <div className="video__detail-wrapper">
-            <span className="video__detail-text">
-              <img
-                src="../../../src/assets/images/Icons/views.svg"
-                alt="views icon"
-              />
-              {` ${details.views}`}
-            </span>
-            <span className="video__detail-text">
-              <img
-                src="../../../src/assets/images/Icons/likes.svg"
-                alt="likes icon"
-              />
-              {` ${details.likes}`}
-            </span>
+          <div>
+            <p className="video__description">{details.description}</p>
+            <p className="video__comment-number">
+              {details.comments.length} Comments
+            </p>
           </div>
         </div>
-        <div>
-          <p className="video__description">{details.description}</p>
-          {/* 
-          <p className="video__comment-number">{comments.length} Comments</p> */}
-        </div>
-      </div>
-    </>
-  );
+      </>
+    );
+  }
 };
 
 export default VideoDetails;

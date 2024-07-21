@@ -2,8 +2,28 @@ import React from "react";
 import "./Upload.scss";
 import Nav from "../../../src/components/Nav/Nav.jsx";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-const Upload = ({ video }) => {
+const api = "56371e22-50ed-4918-a370-af4616c10a37";
+
+const Upload = () => {
+  const [video, setVideo] = useState([]);
+
+  useEffect(() => {
+    const fetchVideo = async () => {
+      try {
+        const response = await axios.get(
+          `https://unit-3-project-api-0a5620414506.herokuapp.com/videos/?api_key=${api}`
+        );
+        setVideo(response.data[0].image);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchVideo();
+  }, []);
+
   return (
     <>
       <Nav />
@@ -12,7 +32,7 @@ const Upload = ({ video }) => {
         <div className="upload__main-wrapper">
           <div className="upload__desktop-wrapper">
             <p className="upload__subtitle">VIDEO THUMBNAIL</p>
-            <img className="upload__image" src={video.image} alt="" />
+            <img className="upload__image" src={video} alt="" />
           </div>
           <form id="form" className="upload__wrapper">
             <div className="upload__input-wrapper">
