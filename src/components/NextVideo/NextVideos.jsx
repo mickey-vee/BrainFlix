@@ -6,7 +6,7 @@ import axios from "axios";
 const api = "56371e22-50ed-4918-a370-af4616c10a37";
 
 const NextVideo = ({ defaultVideoId }) => {
-  const { id } = useParams();
+  let { id } = useParams();
   const [nextVideo, setNextVideo] = useState([]);
 
   useEffect(() => {
@@ -23,11 +23,15 @@ const NextVideo = ({ defaultVideoId }) => {
     fetchVideo();
   }, [id]);
 
+  if (!id) {
+    id = defaultVideoId;
+  }
+
   return (
     <div className="next-video">
       <h2 className="next-video__text">NEXT VIDEOS</h2>
       {nextVideo
-        .filter((video) => video.id !== defaultVideoId)
+        .filter((video) => video.id !== id)
         .map((video) => (
           <Link to={`/video/${video.id}`} key={video.id}>
             <div className="next-video__card">
