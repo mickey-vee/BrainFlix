@@ -1,25 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./Comments.scss";
-import axios from "axios";
-import { useParams } from "react-router-dom";
 
-const api = "56371e22-50ed-4918-a370-af4616c10a37";
-
-const Comments = ({ defaultVideoId }) => {
-  const { id } = useParams();
-  const [comments, setComments] = useState([]);
-
-  useEffect(() => {
-    const fetchComments = async () => {
-      const videoId = id || defaultVideoId;
-      const response = await axios.get(
-        `https://unit-3-project-api-0a5620414506.herokuapp.com/videos/${videoId}?api_key=${api}`
-      );
-      setComments(response.data.comments);
-    };
-    fetchComments();
-  }, [id]);
-
+const Comments = ({ comments }) => {
   const sortedComments = comments.sort((a, b) => b.timestamp - a.timestamp);
 
   return (

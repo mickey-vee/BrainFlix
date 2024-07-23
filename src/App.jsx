@@ -12,7 +12,10 @@ import axios from "axios";
 const api = "56371e22-50ed-4918-a370-af4616c10a37";
 
 const VideoPage = () => {
+  const { id } = useParams();
   const [videoId, setVideoId] = useState();
+  const [commentData, setCommentData] = useState([]);
+  const [videoData, setVideoData] = useState([]);
 
   useEffect(() => {
     const fetchId = async () => {
@@ -29,6 +32,25 @@ const VideoPage = () => {
     fetchId();
   }, []);
 
+  useEffect(() => {
+    const fetchData = async (id) => {
+      try {
+        const response = await axios.get(
+          `https://unit-3-project-api-0a5620414506.herokuapp.com/videos/${id}?api_key=${api}`
+        );
+        setCommentData(response.data.comments);
+        setVideoData(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    if (id || videoId) {
+      const currentVideoId = id || videoId;
+      fetchData(currentVideoId);
+    }
+  }, [id, videoId]);
+
   const defaultVideoId = videoId;
 
   if (!defaultVideoId) {
@@ -41,9 +63,9 @@ const VideoPage = () => {
       <Video defaultVideoId={defaultVideoId} />
       <div className="content-wrapper">
         <div className="detail-form">
-          <VideoDetails defaultVideoId={defaultVideoId} />
+          <VideoDetails videoData={videoData} defaultVideoId={defaultVideoId} />
           <Form />
-          <Comments defaultVideoId={defaultVideoId} />
+          <Comments defaultVideoId={defaultVideoId} comments={commentData} />
         </div>
         <NextVideo defaultVideoId={defaultVideoId} />
       </div>
