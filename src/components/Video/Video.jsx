@@ -1,35 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./Video.scss";
-import axios from "axios";
-import { useParams } from "react-router-dom";
 
-const api = "56371e22-50ed-4918-a370-af4616c10a37";
-
-const Video = ({ defaultVideoId }) => {
-  const { id } = useParams();
-  const [currentVideo, setCurrentVideo] = useState([]);
-
-  useEffect(() => {
-    const fetchVideo = async () => {
-      const videoId = id || defaultVideoId;
-      try {
-        const response = await axios.get(
-          `https://unit-3-project-api-0a5620414506.herokuapp.com/videos/${videoId}?api_key=${api}`
-        );
-        setCurrentVideo(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchVideo();
-  }, [id]);
-
+const Video = ({ videoData }) => {
   return (
     <section className="video" id="video">
       <video
         className="video__image"
-        src={currentVideo.video}
-        poster={currentVideo.image}
+        src={videoData.video}
+        poster={videoData.image}
         controls
       ></video>
     </section>

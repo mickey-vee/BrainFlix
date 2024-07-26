@@ -18,11 +18,26 @@ const Upload = () => {
         );
         setVideo(response.data[0].image);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     };
     fetchVideo();
   }, []);
+
+  const handleClick = () => {
+    const postVideo = async () => {
+      try {
+        const response = await axios.post("http://localhost:8080/video", {
+          title: "test123",
+          description: "test123",
+        });
+        response();
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    postVideo();
+  };
 
   return (
     <>
@@ -67,6 +82,7 @@ const Upload = () => {
               className="upload__submit"
               id="upload-video"
               onClick={() => {
+                handleClick;
                 alert("Video has been uploaded");
               }}
             >

@@ -9,11 +9,11 @@ import Upload from "./pages/Upload/Upload";
 import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import axios from "axios";
 
-const VideoPage = () => {
+const VideoPage = ({ defaultVideoId }) => {
   const { id } = useParams();
-  const [videoId, setVideoId] = useState();
+  const [videoId, setVideoId] = useState(defaultVideoId);
   const [commentData, setCommentData] = useState([]);
-  const [videoData, setVideoData] = useState([]);
+  const [videoData, setVideoData] = useState({});
 
   useEffect(() => {
     const fetchId = async () => {
@@ -45,23 +45,21 @@ const VideoPage = () => {
     }
   }, [id, videoId]);
 
-  const defaultVideoId = videoId;
-
-  if (!defaultVideoId) {
+  if (!videoId || !videoData) {
     return <div>Loading...</div>;
   }
 
   return (
     <>
-      <Nav defaultVideoId={defaultVideoId} />
-      <Video defaultVideoId={defaultVideoId} />
+      <Nav defaultVideoId={videoId} />
+      <Video videoData={videoData} />
       <div className="content-wrapper">
         <div className="detail-form">
-          <VideoDetails videoData={videoData} defaultVideoId={defaultVideoId} />
+          <VideoDetails videoData={videoData} defaultVideoId={videoId} />
           <Form />
-          <Comments defaultVideoId={defaultVideoId} comments={commentData} />
+          <Comments defaultVideoId={videoId} comments={commentData} />
         </div>
-        <NextVideo defaultVideoId={defaultVideoId} />
+        <NextVideo defaultVideoId={videoId} />
       </div>
     </>
   );
