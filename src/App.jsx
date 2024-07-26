@@ -14,6 +14,7 @@ const VideoPage = ({ defaultVideoId }) => {
   const [videoId, setVideoId] = useState(defaultVideoId);
   const [commentData, setCommentData] = useState([]);
   const [videoData, setVideoData] = useState({});
+  const [nextVideo, setnextVideo] = useState({});
 
   useEffect(() => {
     const fetchId = async () => {
@@ -21,6 +22,8 @@ const VideoPage = ({ defaultVideoId }) => {
         const response = await axios.get(`http://localhost:8080/video`);
         const fetchedVideoId = response.data[0].id;
         setVideoId(fetchedVideoId);
+        setnextVideo(response.data);
+        console.log(response.data);
       } catch (error) {
         console.log(error);
       }
@@ -59,7 +62,7 @@ const VideoPage = ({ defaultVideoId }) => {
           <Form />
           <Comments defaultVideoId={videoId} comments={commentData} />
         </div>
-        <NextVideo defaultVideoId={videoId} />
+        <NextVideo defaultVideoId={videoId} nextVideo={nextVideo} />
       </div>
     </>
   );
