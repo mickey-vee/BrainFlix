@@ -1,15 +1,10 @@
 import React, { useState, useEffect } from "react";
-import Nav from "./components/Nav/Nav";
-import Video from "./components/Video/Video";
-import VideoDetails from "./components/VideoDetails/VideoDetails";
-import NextVideo from "./components/NextVideo/NextVideos";
-import Form from "./components/Form/Form";
-import Comments from "./components/Comments/Comments";
 import Upload from "./pages/Upload/Upload";
 import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import axios from "axios";
+import VideoPage from "./pages/VideoPage/VideoPage";
 
-const VideoPage = ({ defaultVideoId }) => {
+const MainPage = ({ defaultVideoId }) => {
   const { id } = useParams();
   const [videoId, setVideoId] = useState(defaultVideoId);
   const [commentData, setCommentData] = useState([]);
@@ -23,7 +18,6 @@ const VideoPage = ({ defaultVideoId }) => {
         const fetchedVideoId = response.data[0].id;
         setVideoId(fetchedVideoId);
         setnextVideo(response.data);
-        console.log(response.data);
       } catch (error) {
         console.log(error);
       }
@@ -53,18 +47,12 @@ const VideoPage = ({ defaultVideoId }) => {
   }
 
   return (
-    <>
-      <Nav defaultVideoId={videoId} />
-      <Video videoData={videoData} />
-      <div className="content-wrapper">
-        <div className="detail-form">
-          <VideoDetails videoData={videoData} defaultVideoId={videoId} />
-          <Form />
-          <Comments defaultVideoId={videoId} comments={commentData} />
-        </div>
-        <NextVideo defaultVideoId={videoId} nextVideo={nextVideo} />
-      </div>
-    </>
+    <VideoPage
+      videoId={videoId}
+      videoData={videoData}
+      commentData={commentData}
+      nextVideo={nextVideo}
+    />
   );
 };
 
@@ -72,8 +60,8 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<VideoPage />} />
-        <Route path="/video/:id" element={<VideoPage />} />
+        <Route path="/" element={<MainPage />} />
+        <Route path="/video/:id" element={<MainPage />} />
         <Route path="/upload" element={<Upload />} />
       </Routes>
     </BrowserRouter>
