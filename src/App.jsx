@@ -9,8 +9,6 @@ import Upload from "./pages/Upload/Upload";
 import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import axios from "axios";
 
-const api = "56371e22-50ed-4918-a370-af4616c10a37";
-
 const VideoPage = () => {
   const { id } = useParams();
   const [videoId, setVideoId] = useState();
@@ -20,9 +18,7 @@ const VideoPage = () => {
   useEffect(() => {
     const fetchId = async () => {
       try {
-        const response = await axios.get(
-          `https://unit-3-project-api-0a5620414506.herokuapp.com/videos?api_key=${api}`
-        );
+        const response = await axios.get(`http://localhost:8080/video`);
         const fetchedVideoId = response.data[0].id;
         setVideoId(fetchedVideoId);
       } catch (error) {
@@ -35,9 +31,7 @@ const VideoPage = () => {
   useEffect(() => {
     const fetchData = async (id) => {
       try {
-        const response = await axios.get(
-          `https://unit-3-project-api-0a5620414506.herokuapp.com/videos/${id}?api_key=${api}`
-        );
+        const response = await axios.get(`http://localhost:8080/video/${id}`);
         setCommentData(response.data.comments);
         setVideoData(response.data);
       } catch (error) {
