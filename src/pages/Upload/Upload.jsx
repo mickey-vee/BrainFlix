@@ -1,22 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Upload.scss";
 import Nav from "../../../src/components/Nav/Nav.jsx";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
 import axios from "axios";
 
-const api = "56371e22-50ed-4918-a370-af4616c10a37";
-
 const Upload = () => {
-  const [video, setVideo] = useState([]);
+  const [video, setVideo] = useState("");
+  const [input, setInput] = useState({
+    title: "",
+    description: "",
+    image: "",
+  });
 
   useEffect(() => {
     const fetchVideo = async () => {
       try {
-        const response = await axios.get(
-          `https://unit-3-project-api-0a5620414506.herokuapp.com/videos/?api_key=${api}`
-        );
-        setVideo(response.data[0].image);
+        const response = await axios.get(`http://localhost:8080/video`);
+        const videoImage = response.data[0].image;
+        setVideo(videoImage);
+        setInput({
+          title: input.title,
+          description: input.description,
+          image: videoImage,
+        });
       } catch (error) {
         console.error(error);
       }
@@ -24,19 +30,25 @@ const Upload = () => {
     fetchVideo();
   }, []);
 
-  const handleClick = () => {
-    const postVideo = async () => {
-      try {
-        const response = await axios.post("http://localhost:8080/video", {
-          title: "test123",
-          description: "test123",
-        });
-        response();
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    postVideo();
+  const handleClick = async () => {
+    try {
+      await axios.post("http://localhost:8080/video", {
+        title: input.title,
+        description: input.description,
+        image: input.image,
+      });
+      alert("Video has been uploaded");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const test = (event) => {
+    const { name, value } = event.target;
+    setInput({
+      ...input,
+      [name]: value,
+    });
   };
 
   return (
@@ -58,33 +70,35 @@ const Upload = () => {
                 className="upload__text"
                 type="text"
                 placeholder="Add a title to your video"
-              ></input>
+                name="title"
+                value={input.title}
+                onChange={test}
+              />
               <label className="upload__label" htmlFor="upload">
                 ADD A VIDEO DESCRIPTION
               </label>
               <textarea
                 className="upload__text"
                 id="upload"
-                name="user_comment"
+                name="description"
                 rows="6"
                 cols="30"
                 placeholder="Add a description to your video"
-              ></textarea>
+                value={input.description}
+                onChange={test}
+              />
             </div>
           </form>
         </div>
         <div className="upload__buttons">
-          <button className="cancel-button">
-            <span className="cancel-button__text">CANCEL</span>
-          </button>
           <Link to={"/"} className="link-wrapper">
+            <button className="cancel-button">
+              <span className="cancel-button__text">CANCEL</span>
+            </button>
             <button
               className="upload__submit"
               id="upload-video"
-              onClick={() => {
-                handleClick;
-                alert("Video has been uploaded");
-              }}
+              onClick={handleClick}
             >
               <img
                 src="./src/assets/images/Icons/publish.svg"
