@@ -34,14 +34,12 @@ Instead of videos, images are used, as the primary focus of the project was mana
 
 ### Front-End
 1. Clone the repository.
-2. Navigate to the `client` folder.
-3. Run `npm install` to install dependencies.
-4. Start the React app with `npm start`.
+2. Run `npm install` to install dependencies.
+3. Start the React app with `npm start`.
 
 ### Back-End
-1. Navigate to the `server` folder.
-2. Run `npm install` to install dependencies.
-3. Set up your MySQL database and update the `.env` file with your credentials.
-4. Run `npm start` to start the server.
+1. Run `npm install` to install dependencies.
+2. Set up your MySQL database and update the `.env` file with your credentials.
+3. Run `npm start` to start the server.
 
 **BrainFlix** was one of the first React apps developed during the bootcamp, providing an opportunity to manage state, implement CRUD operations, and build a fully responsive full-stack application.
